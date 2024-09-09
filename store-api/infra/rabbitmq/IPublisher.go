@@ -6,11 +6,12 @@ import (
 	"os"
 	"time"
 
+	"github.com/Arturlima/store-api/core/handlers/requests"
 	"github.com/rabbitmq/amqp091-go"
 )
 
 type IPublisher interface {
-	Publish(s string) (err error)
+	Publish(s requests.Product) (err error)
 }
 
 type Publisher struct {
@@ -23,7 +24,7 @@ func NewPublisher() IPublisher {
 	}
 }
 
-func (p *Publisher) Publish(s string) (err error) {
+func (p *Publisher) Publish(s requests.Product) (err error) {
 	m, _ := json.Marshal(s)
 	message := amqp091.Publishing{
 		ContentType: "application/json",
