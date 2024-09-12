@@ -1,0 +1,17 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch Package",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "${workspaceFolder}/",
+            "env": {
+                "DB_URL": "postgres://admin:adminpass@localhost:5432/stockdb?sslmode=disable",
+                "AMQP_SERVER_URL": "amqp://admin:password@localhost:5672",
+                "AMQP_QUEUE": "STATUS.QUEUE",
+            }
+        }
+    ]
+}

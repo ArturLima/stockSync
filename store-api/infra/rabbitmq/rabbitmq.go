@@ -51,7 +51,7 @@ func (r *RabbitMQ) setChannel() (c *amqp.Channel) {
 }
 
 func (r *RabbitMQ) setQueue() {
-	q, _ := r.channel.QueueDeclare(
+	q, _ := r.Channel().QueueDeclare(
 		os.Getenv("AMQP_QUEUE"), // name
 		false,                   // durable
 		false,                   // delete when unused
