@@ -1,8 +1,11 @@
 package handlers
 
 import (
+	"encoding/json"
+	"log"
+
+	"github.com/Arturlima/status-worker/core/models"
 	"github.com/Arturlima/status-worker/infra/db"
-	"github.com/uptrace/bun"
 )
 
 type IPackageHandler interface {
@@ -10,15 +13,24 @@ type IPackageHandler interface {
 }
 
 type PackageHandler struct {
-	db *bun.DB
+	repo db.IStatusRepository
 }
 
 func NewPackageHandler() IPackageHandler {
 	return &PackageHandler{
-		db: db.NewDB(),
+		repo: db.NewRepository(),
 	}
 }
 
 func (p *PackageHandler) AddOrUpdateStatus(b []byte) (done bool) {
-	return true
+
+	var model models.Package
+
+	err := json.Unmarshal(b, &model)
+	if err != nil {
+		log.Println("Error > ", err)
+	}
+
+	err = p.repo.Insert(&model)
+	return err != nil
 }
