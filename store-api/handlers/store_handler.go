@@ -4,9 +4,10 @@ import (
 	"log/slog"
 	"net/http"
 
-	"github.com/Arturlima/store-api/core/handlers/requests"
+	"github.com/Arturlima/store-api/handlers/requests"
+	"github.com/Arturlima/store-api/handlers/response"
 	"github.com/Arturlima/store-api/infra/rabbitmq"
-	"github.com/Arturlima/store-api/utils"
+	"github.com/Arturlima/store-api/pkg/utils"
 	"github.com/gin-gonic/gin"
 )
 
@@ -34,9 +35,9 @@ func (h *StoreHandler) RequestProductFromCD(c *gin.Context) {
 
 	err := h.pub.Publish(body)
 	if err != nil {
-		sendError(c, http.StatusInternalServerError, err)
+		response.SendError(c, http.StatusInternalServerError, err)
 		return
 	}
 
-	sendOk(c, utils.AsResult(body))
+	response.SendOk(c, utils.AsResult(body))
 }

@@ -1,8 +1,8 @@
-package configs
+package providers
 
 import (
-	"github.com/Arturlima/store-api/controllers"
-	"github.com/Arturlima/store-api/core/handlers"
+	"github.com/Arturlima/store-api/handlers"
+	"github.com/Arturlima/store-api/handlers/controllers"
 	"github.com/Arturlima/store-api/infra/rabbitmq"
 )
 

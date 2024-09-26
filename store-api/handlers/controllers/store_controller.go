@@ -1,7 +1,7 @@
 package controllers
 
 import (
-	"github.com/Arturlima/store-api/core/handlers"
+	"github.com/Arturlima/store-api/handlers"
 	"github.com/gin-gonic/gin"
 )
 

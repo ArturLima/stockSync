@@ -6,7 +6,7 @@ import (
 	"os"
 	"time"
 
-	"github.com/Arturlima/store-api/core/handlers/requests"
+	"github.com/Arturlima/store-api/handlers/requests"
 	"github.com/rabbitmq/amqp091-go"
 )
 

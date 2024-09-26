@@ -3,7 +3,7 @@ package main
 import (
 	"log/slog"
 
-	"github.com/Arturlima/store-api/configs"
+	"github.com/Arturlima/store-api/providers"
 	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 )
@@ -19,7 +19,7 @@ func main() {
 func run() error {
 	slog.Info("Starting providers")
 
-	provider := configs.NewProvider()
+	provider := providers.NewProvider()
 
 	g := gin.New()
 

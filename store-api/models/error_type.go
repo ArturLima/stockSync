@@ -1,4 +1,4 @@
-package enums
+package models
 
 const (
 	ValidationError = "validation-error"
